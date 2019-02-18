@@ -166,17 +166,13 @@ def player_stats(queried_player)
 end
 
 def big_shoe_rebounds
-  big_shoe_owner = nil
-  big_shoe_size = nil
-  big_shoe_team = nil
+  big_shoe_hash = nil
   game_hash.each do |team, values|
     values[:players].each do |name, stats|
-      if big_shoe_size == nil || stats[:shoe] > big_shoe_size
-        big_shoe_owner = name
-        big_shoe_size = stats[:shoe]
-        big_shoe_team = team
+      if big_shoe_hash == nil || stats[:shoe] > big_shoe_hash[:shoe]
+        big_shoe_hash = stats
       end
     end
   end
-  game_hash[big_shoe_team][:players][big_shoe_owner][:rebounds]
+  big_shoe_hash[:rebounds]
 end
