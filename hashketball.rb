@@ -170,6 +170,7 @@ def big_shoe_rebounds
   game_hash.each do |team, values|
     values[:players].each do |name, stats|
       if big_shoe_hash == nil || stats[:shoe] > big_shoe_hash[:shoe]
+        binding.pry
         big_shoe_hash = stats
       end
     end
